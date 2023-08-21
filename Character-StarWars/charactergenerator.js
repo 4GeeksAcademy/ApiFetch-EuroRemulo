@@ -4,13 +4,17 @@ function setChar() {
     fetch("https://swapi.tech/api/people/1")
     .then(res => res.json())
     .then(data => {
-        const characterName = data.result.properties.name
+        const characterName = data.result.properties.name;
+        const characterUrl = data.result.properties.url;
 
-        const h1Element = document.getElementById('name');
-        h1Element.innerHTML = characterName;
+        const charName = document.getElementById('name');
+        const charUrl = document.createElement('a');
+        charUrl.textContent = characterName;
+        charUrl.href = characterUrl;
+        
+        charName.appendChild(charUrl);
     })
-    .catch(err => console.log(err))
-
+    .catch(err => console.log(err));
 }
-   
+
 setChar();
